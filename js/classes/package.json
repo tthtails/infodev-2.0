@@ -1,0 +1,13 @@
+{
+  "name": "sitenovo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dados.js",
+  "scripts": {
+    "start": "node dados.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thales Wallison",
+  "license": "ISC",
+  "type": "module"
+}
