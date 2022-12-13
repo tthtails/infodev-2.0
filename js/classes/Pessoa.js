@@ -15,7 +15,7 @@ export class Pessoa {
 
     set nome(newNome){
         if (newNome == "") {
-            return false;
+            return null;
         } 
         this.#nome = newNome.toUpperCase();
         return this.#nome;
@@ -27,7 +27,7 @@ export class Pessoa {
 
     set dtNascimento(newDtNascimento){
         if (newDtNascimento == "" || newDtNascimento.length != 8) {
-            return false;
+            return null;
         } 
         this.#dtNascimento = newdtNascimento;
         return this.#dtNascimento;

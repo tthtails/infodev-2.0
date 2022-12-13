@@ -8,18 +8,10 @@ export class Curso {
     constructor(nomeCurso, cargaHoraria, professor) {
         this.#nomeCurso = nomeCurso.toUpperCase();
         this.#cargaHoraria = cargaHoraria;
-        this.professor = professor;
+        this.#professor = professor;
     }
 
     get nomeCurso() {
-        return this.#nomeCurso;
-    }
-
-    set nomeCurso (newNomeCurso) {
-        if (newNomeCurso = "") {
-            return false;
-        }
-        this.#nomeCurso = newNomeCurso.toUpperCase();
         return this.#nomeCurso;
     }
 
@@ -36,7 +28,7 @@ export class Curso {
             this.#professor = professor;
             return professor;
         }
-        return false;
+        return null;
     }
 
     toString() {

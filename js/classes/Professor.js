@@ -14,16 +14,14 @@ export class Professor extends Pessoa {
 
     set salario(newSalario) {
         if (newSalario < 0) {
-            return false;
+            return null;
         }
         this.#salario = newSalario;
         return this.#salario;
     }
 
     toString () {
-        return "Nome: " + super.nome +
-            "\nData de nascimento: " + super.dtNascimento +
-            "\nCPF: " + super.cpf +
+        return super.toString() + 
             "\nSalário: " + (this.#salario).toFixed(2);
     }
 }

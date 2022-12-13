@@ -38,7 +38,7 @@ function tabelaFiltro() {
             tdFalta.textContent = vetParticipacoes[i].faltas;
             tdMedia.textContent = vetParticipacoes[i].media();
             tdPercentualFaltas.textContent = vetParticipacoes[i].pctFalta().toFixed(1);
-            tdAprovacao.textContent = vetParticipacoes[i].aprovacao().toLocaleUpperCase();
+            tdAprovacao.textContent = vetParticipacoes[i].isAprovado() ? "APROVADO" : "REPROVADO";
 
             tr.appendChild(tdNomeAluno);
             tr.appendChild(tdNomeCurso);

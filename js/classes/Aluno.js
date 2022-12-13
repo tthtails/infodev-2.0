@@ -13,9 +13,7 @@ export class Aluno extends Pessoa {
     }
 
     toString () {
-        return "Nome: " + super.nome +
-            "\nData de nascimento: " + super.dtNascimento +
-            "\nCPF: " + super.cpf +
-            "\nNúmero de matrícula: " + this.#numMatricula;
+        return super.toString() + 
+           "\nNúmero de matrícula: " + this.#numMatricula;
     }
 }

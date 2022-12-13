@@ -1,7 +1,5 @@
 import { Aluno } from "../classes/Aluno.js";
 import { Curso } from "../classes/Curso.js";
-import { Pessoa } from "../classes/Pessoa.js";
-import { Professor } from "../classes/Professor.js";
 
 export class Participacao {
     #nota1;
@@ -16,8 +14,8 @@ export class Participacao {
         this.#nota2 = nota2;
         this.#notaParticipacao = notaParticipacao;
         this.#faltas = faltas;
-        this.aluno = aluno;
-        this.curso = curso;
+        this.#aluno = aluno;
+        this.#curso = curso;
     }
 
     get nota1() {
@@ -25,8 +23,8 @@ export class Participacao {
     }
 
     set nota1(newNota1) {
-        if (newNota1 == "") {
-            return false;
+        if (isNaN(newNota1)) {
+            return NaN;
         }
         this.#nota1 = newNota1;
         return this.#nota1;
@@ -37,8 +35,8 @@ export class Participacao {
     }
 
     set nota2(newNota2) {
-        if (newNota2 == "") {
-            return false;
+        if (isNaN(newNota2)) {
+            return NaN;
         }
         this.#nota2 = newNota2;
         return this.#nota2;
@@ -50,7 +48,7 @@ export class Participacao {
 
     set notaParticipacao(newNotaParticipacao) {
         if (newNotaParticipacao == "") {
-            return false;
+            return null;
         }
         this.#notaParticipacao = newNotaParticipacao;
         return this.#notaParticipacao;
@@ -61,8 +59,8 @@ export class Participacao {
     }
 
     set faltas(newFaltas) {
-        if (newFaltas == "") {
-            return false;
+        if (isNaN(newFaltas)) {
+            return NaN;
         }
         this.#faltas = newFaltas;
         return this.#faltas;
@@ -77,7 +75,7 @@ export class Participacao {
             this.#aluno = aluno;
             return aluno;
         }
-        return false;
+        return null;
     }
 
     get curso() {
@@ -89,7 +87,7 @@ export class Participacao {
             this.#curso = curso;
             return curso;
         }
-        return false;
+        return null;
     }
 
     media() {
@@ -102,15 +100,15 @@ export class Participacao {
         return pctFaltas;
     }
 
-    aprovacao() {
+    isAprovado() {
         if (this.media() >= 60 && this.pctFalta() <= 25) {
-            return "Aprovado!";
+            return true;
         }
-        return "Reprovado!";
+        return false;
     }
 
     toString() {
-        return "Nota da primeira prova: " + this.#nota1 +
+        let strAux = "Nota da primeira prova: " + this.#nota1 +
             "\nNota da segunda prova: " + this.#nota2 +
             "\nNota da participação: " + this.#notaParticipacao +
             "\nFaltas: " + this.#faltas +
@@ -118,6 +116,32 @@ export class Participacao {
             "\nCurso: " + this.#curso.nomeCurso +
             "\nMedia: " + this.media() +
             "\nPercentual de faltas: " + this.pctFalta() +
-            "\nStatus de aprovação: " + (this.aprovacao()).toUpperCase();
+            "\nStatus Final: ";
+
+        strAux += this.isAprovado() ? "APROVADO" : "REPROVADO";
+
+        return strAux;
     }
 }
+/* null : 
+if (newAlgumaCoisa != undefined) {
+    return this.#algumaCoisa;
+} else {
+    return null
+}
+*/
+
+/* false || true :
+if (return this.#algumaCoisa) {
+    return true;
+} else {
+    return false;
+*/
+
+/* NaN :
+if (isNan(newAlgumaCoisa)) {
+    return Nan;
+} else {
+    return this.#algumaCoisa;
+}
+*/
